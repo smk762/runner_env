@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: build-dockerhub-image
       run: |
+        pwd
+        ls
         docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t qt-ci .
         docker tag qt-ci:latest ${{ secrets.DOCKER_USER }}/qt-ci:latest
