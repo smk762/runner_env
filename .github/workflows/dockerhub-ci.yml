@@ -15,6 +15,11 @@ jobs:
       run: |
         pwd
         ls
+        cd ..
+        pwd
+        ls
+        find / | grep Dockerfile
+        echo "wtf"        
         docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t qt-ci .
         docker tag qt-ci:latest ${{ secrets.DOCKER_USER }}/qt-ci:latest
