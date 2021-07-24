@@ -10,10 +10,10 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-      steps:
-      - name: build-image
-        run: |
-          docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t qt-ci .
-          docker tag qt-ci:latest ${{ secrets.DOCKER_USER }}/qt-ci:latest
-          docker push ${{ secrets.DOCKER_USER }}/qt-ci:latest
+    steps:
+    - name: build-image
+      run: |
+        docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -t qt-ci .
+        docker tag qt-ci:latest ${{ secrets.DOCKER_USER }}/qt-ci:latest
+        docker push ${{ secrets.DOCKER_USER }}/qt-ci:latest
