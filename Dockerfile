@@ -24,6 +24,11 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmak
     tar xvf cmake-$CMAKE_VERSION-linux-x86_64.tar.gz; curdir=$(pwd); \
     export PATH=${PATH}:${curdir}/cmake-$CMAKE_VERSION-linux-x86_64/bin;
 
+RUN export FORCE_UNSAFE_CONFIGURE=1 \
+    wget https://ftp.wayne.edu/gnu/tar/tar-1.34.tar.gz && tar -xvf tar-1.34.tar.gz \
+    cd tar-1.34 && ./configure && make && make install \
+    cp src/tar $(which tar) 
+
 RUN python3 -m pip install --upgrade pip; \
     python3 -m pip install setuptools wheel; \
     python3 -m pip install py7zr==0.16.1; \
