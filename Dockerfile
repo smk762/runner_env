@@ -20,10 +20,10 @@ RUN wget https://apt.llvm.org/llvm.sh; chmod +x llvm.sh; ./llvm.sh 12; \
     export CXX=clang++-12; \
     export CC=clang-12;
 
-RUN export FORCE_UNSAFE_CONFIGURE=1 \
-    wget https://ftp.wayne.edu/gnu/tar/tar-1.34.tar.gz && tar -xvf tar-1.34.tar.gz \
-    cd tar-1.34 && ./configure && make && make install \
-    cp src/tar $(which tar)
+RUN export FORCE_UNSAFE_CONFIGURE=1; \
+    wget https://ftp.wayne.edu/gnu/tar/tar-1.34.tar.gz && tar -xvf tar-1.34.tar.gz; \
+    cd tar-1.34 && ./configure && make && make install; \
+    cp src/tar $(which tar);
 
 RUN wget https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-linux-x86_64.tar.gz; \
     tar xvf cmake-$CMAKE_VERSION-linux-x86_64.tar.gz; curdir=$(pwd); \
